@@ -542,3 +542,48 @@ result of call is: None
 > > {: .language-python}
 > {: .solution}
 {: .challenge}
+
+> ## Introduction to defensive programming when making a function with isinstance()
+> 
+> 
+> Let's imagine a function that takes a string object as an argument.
+>
+> ~~~
+> def print_name(my_name):
+>     return 'My name is ' + my_name
+> 
+> print_name('Maria')
+> ~~~
+> {: .language-python}
+> 
+> An issue may occur because the function argument requires a string to be concatenated to 'My name is :'. Otherwise an error occurs:
+> 
+> ~~~
+> print_name(1)
+> ~~~
+> {: .language-python}
+>
+> We can ask from Python to work on the concatenation of 'My name is ' with the string argument only if the argument is of a specific type. For this we can use isinstance(). 
+> Let's see how isinstance() works:
+> 
+> ~~~
+> isinstance('Maria', str)
+> isinstance(1, str)
+> ~~~
+> {: .language-python}
+> 
+> Exercise: include isinstance() into the function so that if the object provided as an argument is not string then the function would not print anything.
+>
+> > ## Solution
+> > The solution is: 
+> > ~~~
+> > def print_name(my_name):
+> >     if (isinstance(my_name, str) == True):
+> >         return 'My name is ' + my_name
+> > print_name('Maria')
+> > print_name(1) # it does not print anything and it did not create an error
+> > ~~~ 
+> > {: .language-python}
+> >
+> {: .solution}
+{: .challenge}
